@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function response_success($data = [],$code = 200,$message = '')
+    protected function response_success($data = [],$code = 200,$message = '成功')
     {
         return $this->resultJson($code,$message,$data);
     }
@@ -21,8 +21,14 @@ class Controller extends BaseController
         return $this->resultJson($code,$message);
     }
 
-    protected function resultJson($code = 1,$message = '',$data = [])
+    private function resultJson($code = 1,$message = '',$data = [])
     {
-        return json_encode(['code'=>$code,'message'=>$message,'data'=>[$data]]);
+        return response()
+            ->json([
+                'code' => $code,
+                'message' => $message,
+                'data' => $data
+            ])
+            ;
     }
 }

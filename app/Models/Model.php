@@ -15,4 +15,5 @@ class Model extends BaseModel
      * @var array
      */
     protected $dates = ['deleted_at'];
+    protected $hidden = ['deleted_at'];
 }
