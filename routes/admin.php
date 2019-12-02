@@ -13,6 +13,8 @@ Route::prefix('auth')->namespace('\Backend\Auth')->group(function($api){
 Route::namespace('Backend')->group(function () {
     Route::prefix('article')->group(function(){
         Route::get('list','ArticleController@getList');
+        Route::post('save','ArticleController@save');
+        Route::get('info','ArticleController@info');
     });
 
     Route::prefix('category')->group(function($api){

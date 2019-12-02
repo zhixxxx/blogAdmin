@@ -21,5 +21,4 @@ class AdminUserController extends Controller
         return $this->response_success($data);
     }
 
-
 }

@@ -12,23 +12,8 @@ class AdminUser extends Authenticatable implements JWTSubject
 
 
     protected $table = 'admin_user';
-    public $status = ['1'=>1,'2'=>2];//用户状态1=正常 2=禁止
+    public $status_field = ['1'=>1,'2'=>2];//用户状态1=正常 2=禁止
 
-    //数据库可查字段
-    public $field = [
-        'id',
-        'username',
-        'password',
-        'nickname',
-        'avatar',
-        'phone',
-        'email',
-        'last_time',
-        'last_ip',
-        'status',
-        'created_at',
-        'updated_at'
-    ];
 
     public function getJWTIdentifier()
     {

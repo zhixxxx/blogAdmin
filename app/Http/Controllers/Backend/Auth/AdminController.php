@@ -36,7 +36,11 @@ class AdminController extends Controller
     public function getUserInfo()
     {
         $user_id = auth('admin')->id();
-        $data = $this->user->select($this->user->field)->where('id',$user_id)->first();
+        $data = $this->user
+            ->select('id','username','password','nickname','avatar','phone',
+                'email','last_time','last_ip','status','created_at','updated_at')
+            ->where('id',$user_id)
+            ->first();
         return $this->response_success($data);
     }
 }

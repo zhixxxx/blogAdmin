@@ -20,26 +20,10 @@ class CategoryController extends Controller
     {
         $source = $request->input('source','list');
         $pageSize = $request->input('pageSize',$this->pageSize);
-        $data = [];
         $query = $this->category->select('id','name','pid','created_at','updated_at');
 
         if(!strcmp($source,'article')){
-            $result = $query->get();
-            foreach ($result as $key=>$val){
-                if($val->pid == 0){
-                    $data[$val->id][] = [
-                        'value' => $val->id,
-                        'label' => $val->name,
-                    ];
-                }
-                if($val->pid != 0){
-                    $data[$val->pid]['children'][] = [
-                        'value' => $val->id,
-                        'label' => $val->name,
-                    ];
-                }
-            }
-            $data = array_values($data);
+            $data = $query->where('pid','!=',0)->get();
         }else{
             $data = $query->paginate($pageSize);
         }
