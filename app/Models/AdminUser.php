@@ -10,7 +10,7 @@ class AdminUser extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-
+    protected $hidden = ['password'];
     protected $table = 'admin_user';
     public $status_field = ['1'=>1,'2'=>2];//用户状态1=正常 2=禁止
 

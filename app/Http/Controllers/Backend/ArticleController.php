@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Common\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ArticleRequest;
 use App\Models\Article;
@@ -25,9 +26,9 @@ class ArticleController extends Controller
 
         $data = $this->article->paginate($pageSize);
         if($data){
-            return $this->response_success($data);
+            return Response::response_success($data);
         }
-        return $this->response_fail('失败');
+        return Response::response_fail('失败');
     }
 
     public function save(ArticleRequest $request)
@@ -48,7 +49,7 @@ class ArticleController extends Controller
         if(!$result){
             return $this->response_fail('保存失败');
         }
-        return $this->response_success();
+        return Response::response_success();
     }
 
     public function info(Request $request)
@@ -59,6 +60,6 @@ class ArticleController extends Controller
             ->with(['category'=>function($sql){
                 $sql->select('id','name');
             }])->find($id);
-        return $this->response_success($data);
+        return Response::response_success($data);
     }
 }

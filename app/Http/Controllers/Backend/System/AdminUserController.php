@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\System;
 
 
+use App\Common\Response;
 use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 
@@ -18,7 +19,7 @@ class AdminUserController extends Controller
     public function getAdminUserList()
     {
         $data = $this->user->get();
-        return $this->response_success($data);
+        return Response::response_success($data);
     }
 
 }

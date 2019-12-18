@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Common\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -27,6 +28,6 @@ class CategoryController extends Controller
         }else{
             $data = $query->paginate($pageSize);
         }
-        return $this->response_success($data);
+        return Response::response_success($data);
     }
 }
