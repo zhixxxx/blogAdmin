@@ -17,7 +17,6 @@ class ArticleRequest extends FormRequest
             case 'POST':
                 return [
                     'title' => 'required',
-                    'category_id' => 'required|integer|min:1',
                     'content' => 'required'
                 ];
                 break;
@@ -31,9 +30,6 @@ class ArticleRequest extends FormRequest
             'pageSize.integer' => '页数必须为整数',
             'pageSize.min' => '页数不得少于:min',
             'title.required' => '标题不能为空',
-            'category_id.required' => '分类id不能为空',
-            'category_id.integer' => '分类id必须为整数',
-            'category_id.min' => '分类id不得小于1',
             'content.required' => '文章内容不能为空'
         ];
     }

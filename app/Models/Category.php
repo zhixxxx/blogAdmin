@@ -12,5 +12,5 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['id','name','pid','created_at','updated_at'];
+    protected $fillable = ['name','pid','created_at','updated_at'];
 }

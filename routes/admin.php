@@ -24,6 +24,12 @@ Route::middleware('checkToken')->group(function () {
             Route::get('info','ArticleController@info');
         });
 
+        Route::prefix('label')->group(function($api){
+            $api->get('list','LabelController@getList');
+            $api->post('save','LabelController@save');
+            $api->post('del','LabelController@del');
+        });
+
         Route::prefix('category')->group(function($api){
             $api->get('list','CategoryController@getList');
         });
