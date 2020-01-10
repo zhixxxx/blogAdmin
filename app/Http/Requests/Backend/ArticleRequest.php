@@ -2,9 +2,15 @@
 
 namespace App\Http\Requests\Backend;
 
+use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
 {
+
+    public function authorize()
+    {
+        return true;
+    }
 
     public function rules()
     {

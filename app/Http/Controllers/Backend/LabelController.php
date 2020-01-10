@@ -28,23 +28,37 @@ class LabelController extends Controller
         $this->request = $request;
     }
 
+    /**
+     * 标签列表
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getList()
     {
         $pageSize = $this->request->input('pageSize',$this->pageSize);
         $name = $this->request->input('name','');
+        $source = $this->request->input('source','list');
 
-
-        $data = $this->label
+        $query = $this->label
             ->where(function ($sql) use ($name) {
                 if ($name) {
                     $sql->where('name','like','%'.$name.'%');
                 }
-            })
-            ->paginate($pageSize);
+            });
+
+        if(!strcmp($source,'article')){
+            $data = $query->where('status',1)->get();
+        }else{
+            $data = $query->paginate($pageSize);
+        }
 
         return Response::response_success($data);
     }
 
+    /**
+     * 修改、添加标签
+     * @param LabelRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function save(LabelRequest $request)
     {
         $name = $request->input('name');
@@ -63,6 +77,10 @@ class LabelController extends Controller
         return Response::response_success();
     }
 
+    /**
+     * 删除标签
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function del()
     {
         $id = $this->request->input('id');
