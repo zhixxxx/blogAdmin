@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Common\Response;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Navigation;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +12,7 @@ class CategoryController extends Controller
     private $category;
     private $pageSize = 10;
 
-    public function __construct(Category $category)
+    public function __construct(Navigation $category)
     {
         $this->category = $category;
     }

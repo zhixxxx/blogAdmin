@@ -64,10 +64,12 @@ class LabelController extends Controller
         $name = $request->input('name');
         $status = $request->input('status');
 
+        $id = $request->input('id',0);
 
-        $data= $this->label->where('name',$name)->first();
-        if (!$data) {
-            $data = new $this->label;
+        if ($id) {
+            $data= $this->label->find($id);
+        } else {
+            $data = $this->label;
         }
 
         $data->name = $name;

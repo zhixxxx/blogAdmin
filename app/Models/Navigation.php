@@ -3,9 +3,9 @@
 namespace App\Models;
 
 
-class Category extends Model
+class Navigation extends Model
 {
-    protected $table = 'category';
+    protected $table = 'navigation';
 
     /**
      * 可以被批量赋值的属性。

@@ -20,7 +20,7 @@ class Article extends Model
     ];
 
     public function category(){
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Navigation::class,'category_id','id');
     }
 
     public function label()

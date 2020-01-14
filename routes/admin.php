@@ -32,8 +32,10 @@ Route::middleware('checkToken')->group(function () {
             $api->post('del','LabelController@del');
         });
 
-        Route::prefix('category')->group(function($api){
-            $api->get('list','CategoryController@getList');
+        Route::prefix('navigation')->group(function($api){
+            $api->get('list','NavController@getList');
+            $api->post('save','NavController@save');
+            $api->post('del','NavController@del');
         });
     });
 });
